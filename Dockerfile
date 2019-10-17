@@ -1,5 +1,5 @@
 # gets the docker image of ruby 2.5 and lets us build on top of that
-FROM ruby:2.5.1-slim
+FROM ruby:2.6.5-slim
 
 # install rails dependencies
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs libsqlite3-dev
@@ -13,8 +13,8 @@ COPY Gemfile /FlexUOMConverter/Gemfile
 #COPY Gemfile.lock /FlexUOMConverter/Gemfile.lock
 
 # Run bundle install to install gems inside the gemfile
-RUN gem update --system
-RUN gem install bundler -v 2.0.1
+#RUN gem update --system
+#RUN gem install bundler -v 2.0.1
 RUN bundle install
 
 # Copy the whole app
