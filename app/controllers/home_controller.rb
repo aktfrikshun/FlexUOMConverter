@@ -14,11 +14,12 @@ class HomeController < ApplicationController
   end
 
   def create
+
     sr = StudentResponse.new
-    sr.input = params[:student_response][:resp_input]
-    sr.from = params[:student_response][:resp_from]
-    sr.to = params[:student_response][:resp_to]
-    sr.answer = params[:student_response][:resp_answer]
+    sr.input = params[:student_response][:resp_input] rescue "missing input"
+    sr.from = params[:student_response][:resp_from] rescue "missing from"
+    sr.to = params[:student_response][:resp_to] rescue "missing to"
+    sr.answer = params[:student_response][:resp_answer] rescue "missing answer"
     sr.result = UOMConversion.check_answer(sr.input, sr.from, sr.to, sr.answer)
     sr.save
     respond_to do |format|
