@@ -31,7 +31,7 @@ It defines a constrained set of conversion unit with the flexibility to add any 
 * Open rails console
   * docker run -i -t -v /srv/FlexUOMConverter:/FlexUOMConverter flexconv:v1.0 rails c
   * irb> require 'uom_conversion'
-  * irb> UOMConversion.check_answer(84.2,'degree Fahrenheit','degree Rankine',543.94)
+  * irb> UOMConversion.check_answer('84.2','Fahrenheit','Rankine','543.94')
 
 * Run bash withun Docker image
   * docker run -i -t -v /srv/FlexUOMConverter:/FlexUOMConverter flexconv:v1.0 bash
