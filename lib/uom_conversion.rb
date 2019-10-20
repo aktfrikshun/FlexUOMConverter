@@ -50,6 +50,8 @@ module UOMConversion
 
   def UOMConversion.check_answer(input, from, to, answer)
     begin
+      input = Float(input)
+      answer = Float(answer)
       from_unit = VALID_UNITS[from.downcase]["name"]
       to_unit = VALID_UNITS[to.downcase]["name"]
       Unitwise(input, from_unit).convert_to(to_unit).value().round(1) == answer.round(1) ? "correct" : "incorrect"
@@ -66,6 +68,11 @@ module UOMConversion
   def UOMConversion.listUMOMUnits()
     #List UMOM supported unit names
     VALID_UNITS.keys.collect { | key | VALID_UNITS[key]['name'] }
+  end
+
+  def UOMConversion.listCompatibleUnits(unit_name)
+    property = VALID_UNITS[unit_name]["property"]
+    UOMConversion.listUnitsForProperty(property)
   end
 
   def UOMConversion.listUnitsForProperty(prop)

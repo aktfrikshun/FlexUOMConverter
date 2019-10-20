@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  input: 1.5
+  from: MyString
+  to: MyString
+  answer: 1.5
+  result: MyString
+
+two:
+  input: 1.5
+  from: MyString
+  to: MyString
+  answer: 1.5
+  result: MyString
