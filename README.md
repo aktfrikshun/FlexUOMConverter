@@ -7,23 +7,23 @@ It defines a constrained set of conversion unit with the flexibility to add any 
 
 * Ruby version
   * 2.6.5
-  
+
 * Database
   * SQLLite ( for temporary persistence of a student worksheet with checked answers )
 
 * System dependencies
   * Docker ( to run in development mode )
-  
+
 * Build docker image
   * clone repo and cd into FlexUOMConverter folder
-  * docker build . -t flexconv:v1.0  
+  * docker build . -t flexconv:v1.0
 
 * How to run the test suite
-  * docker run -i -t flexconv:v1.0 rspec
+  * docker run -i -t  -v /srv/FlexUOMConverter:/FlexUOMConverter flexconv:v1.0 pwd
 
 * Deployment instructions
   * Simply commit to master branch and AWS Code Pipeline will deploy to the ECR instance
-  
+
 * Run locally
   * docker run -i -t -p 3000:3000 -v /srv/FlexUOMConverter:/FlexUOMConverter flexconv:v1.0 rails s -b 0.0.0.0
   * open browser to http://localhost:3000
@@ -37,10 +37,10 @@ It defines a constrained set of conversion unit with the flexibility to add any 
   * docker run -i -t -v /srv/FlexUOMConverter:/FlexUOMConverter flexconv:v1.0 bash
 
 * curl to AWS public url from command line
-  * Index 
+  * Index
     * curl -H "accept: application/json" -H "content-type: application/json" http://rubysample-env.4ngcymdfpz.us-east-1.elasticbeanstalk.com
-  * Check Answer 
+  * Check Answer
     * curl -X POST -H "accept: application/json"  -H "content-type: application/json"   -d '{"student_response": {"resp_input": "85.6","resp_from": "Fahrenheit","resp_to": "Kelvin","resp_answer": "110.7"}}' http://rubysample-env.4ngcymdfpz.us-east-1.elasticbeanstalk.com/create.json
-  * Reset Worksheet 
+  * Reset Worksheet
     * curl -H "accept: application/json"  -H "content-type: application/json"   http://rubysample-env.4ngcymdfpz.us-east-1.elasticbeanstalk.com/reset.json
 
