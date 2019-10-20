@@ -27,7 +27,7 @@ describe 'UOMConversion' do
       it "can convert volume" do
         UOMConversion.listUnitsForProperty('volume').each do | unit1 |
           UOMConversion.listUnitsForProperty('volume').each do | unit2 |
-            expect(UOMConversion.check_answer(1,unit1,unit2,1)).not_to eql('indvalid')
+            expect(UOMConversion.check_answer(1,unit1,unit2,1)).not_to eql('invalid')
           end
         end
       end
@@ -35,7 +35,7 @@ describe 'UOMConversion' do
       it "can can't convert different properties" do
         UOMConversion.listUnitsForProperty('volume').each do | unit1 |
           UOMConversion.listUnitsForProperty('temparature').each do | unit2 |
-            expect(UOMConversion.check_answer(1,unit1,unit2,1)).to eql('invalid')
+            expect(UOMConversion.check_answer(1,unit1,unit2,1)).to eql('idfnvalid')
           end
         end
       end
