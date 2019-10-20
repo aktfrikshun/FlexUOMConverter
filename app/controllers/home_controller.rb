@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+
+  skip_before_action :verify_authenticity_token
+
   def index
     @responses = StudentResponse.all.order(:created_at)
     @total_correct = @responses.select { | resp | resp.result == "correct" }.count
@@ -18,12 +21,19 @@ class HomeController < ApplicationController
     sr.answer = params[:student_response][:resp_answer]
     sr.result = UOMConversion.check_answer(sr.input, sr.from, sr.to, sr.answer)
     sr.save
-    redirect_to :action => :index
+    respond_to do |format|
+      format.html  { redirect_to :action => :index }
+      format.json { render json: sr }
+    end
+
   end
 
   def delete
     StudentResponse.delete_all
-    redirect_to :action => :index
+    respond_to do |format|
+      format.html  { redirect_to :action => :index }
+      format.json { render json: {"msg": "success"} }
+    end
   end
 
   def list_compatible_units
