@@ -3,25 +3,26 @@
   <head>
     <title>FlexUOMConverter</title>
     <%= csrf_meta_tags %>
+
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- Latest compiled and minified CSS -->
 
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
   </head>
 
   <body>
-    <div class='container'>
+    <div class="container">
       <h2>Flexion Coding Challenge -- Unit of Measure Conversion</h2>
       <em>
         ** <strong>Note:</strong> All unit of measure conversions are based on the UCUM ( Unified Code for Units of Measure - Units of Measure Org Specification ) at <a href="http://unitsofmeasure.org/ucum.html" target="_blank">http://unitsofmeasure.org/ucum.html</a>
       </em>
-      <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

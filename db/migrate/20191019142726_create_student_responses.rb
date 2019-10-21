@@ -6,6 +6,7 @@ class CreateStudentResponses < ActiveRecord::Migration[5.2]
       t.string :to
       t.string :answer
       t.string :result
+      t.integer :worksheet_id
 
       t.timestamps
     end
