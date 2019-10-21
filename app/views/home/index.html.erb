@@ -1,34 +1,48 @@
-<div class='container'>
-  <div align="right"><%= link_to "New Test", "/reset" %></div>
-  <% if @responses.count > 0 %>
+<div class="navlink"><%= link_to "Reset Worksheet",  "/reset?worksheet=#{@worksheet}" %></div>
+
+<% if @responses.count > 0 %>
+  <div class="response_table">
     <table class="response-table">
-      <tr><th>Input</th><th>From Unit</th><th>To Unit</th><th>Student Answer</th><th>Result</th></tr>
+      <thead>
+        <tr  class="row100 head">
+          <th class="cell100 column1">Input</th>
+          <th class="cell100 column1">From Unit</th>
+          <th class="cell100 column1">To Unit</th>
+          <th class="cell100 column1">Student Answer</th>
+          <th class="cell100 column1">Result</th>
+        </tr>
+      </thead>
       <% @responses.each do | resp | %>
-          <tr>
-            <td><%= resp.input %></td>
-            <td><%= resp.from %></td>
-            <td><%= resp.to %></td>
-            <td class="<%= (resp.result == "correct") ? "good-response" : "bad-response" %>"><%= resp.answer %></td>
-            <td><%= resp.result %></td>
+          <tr  class="row100 body">
+            <td class="cell100 column1"><%= resp.input %></td>
+            <td class="cell100 column1"><%= resp.from %></td>
+            <td class="cell100 column1"><%= resp.to %></td>
+            <td class="cell100 column1<%= (resp.result == "correct") ? "good-response" : "bad-response" %>"><%= resp.answer %></td>
+            <td class="cell100 column1"><%= resp.result %></td>
           </tr>
       <% end %>
     </table>
-    <span class="summary">Total Questions: <%= @responses.count %>, Total Correct: <%= @total_correct %>, Percent Correct: <%= @pct_correct %></span>
-    <hr width="100%">
-  <% end %>
-  <strong>Please select a from and to conversion and enter the students response</strong>
+  </div>
+  <span class="summary">Total Questions: <%= @responses.count %>, Total Correct: <%= @total_correct %>, Percent Correct: <%= @pct_correct %></span>
+<% end %>
+<div class="spacer">
+</div>
 
+<div class="response-form">
+  <strong>Please select a from and to conversion and enter the students response</strong>
   <%= form_for :student_response, :url => "/create" do |f| %>
+    <input type="hidden" name="worksheet" value=<%= @worksheet %> >
     <table class="question-form">
       <tr><td>Input Value:</td><td> <%= f.text_field :resp_input %></td></tr>
       <tr><td>Convert From Unit:</td><td> <%= f.select(:resp_from, options_for_select(@unit_names))  %></td></tr>
       <tr><td>Convert To Unit:</td><td> <%= f.select(:resp_to, options_for_select(@unit_names))  %></td></tr>
       <tr><td>Student Answer:</td><td> <%= f.text_field :resp_answer%></td></tr>
     </table>
-  <%= f.submit %>
-<% end %>
-<div align="right"><%= link_to "New Test", "/reset" %></div>
+    <%= f.submit %>
+  <% end %>
 </div>
+<div class="navlink"><%= link_to "Reset Worksheet", "/reset?worksheet=#{@worksheet}" %></div>
+
 <script>
 $(document).ready(function() {
   $("#student_response_resp_from").on('change', function(){

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_142726) do
     t.string "to"
     t.string "answer"
     t.string "result"
+    t.integer "worksheet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
