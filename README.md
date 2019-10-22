@@ -2,7 +2,7 @@
 
 The FlexUOMConverter is designed for science teachers who are as comfortable using the command line as they are using a browser.
 
-It provides science teachers the ability to enter the questions and student responses into a computer ( console or web browser ) to be graded.
+It provides science teachers the ability to enter the unit conversion questions and student responses into a computer ( console or web browser ) to be graded.
 
 Conversions supported are as follows:
 * temperatures between Kelvin, Celsius, Fahrenheit, and Rankine
@@ -11,6 +11,10 @@ Conversions supported are as follows:
 __Note:__ All unit of measure conversions are based on the UCUM ( Unified Code for Units of Measure - Units of Measure Org Specification ) at http://unitsofmeasure.org/ucum.html
 
 The FlexUOMConverter application defines a constrained set of conversion units with the flexibility to add any unit from the UMOM specification or define custom units.  A volume unit named "finger" is provided as an example of a custom unit
+
+This application was developed with DRY ( Don't Repeat Yourself ) principals and utilizes the Unitwise gem to provide the UMOM unit conversion details.
+
+A development instance of the application is run from within a docker image and therefore has no software installation dependencies on the host os other than docker itself.
 
 * Ruby version
   * 2.6.5
@@ -42,13 +46,26 @@ The FlexUOMConverter application defines a constrained set of conversion units w
 
 __Usage__
 
+This application can be run from the AWS cloud, started up locally on port 3003 or run from a ruby console window.   A JSON payload based REST service is also available which can be accessed via curl and http tools such as Postman
+
+* Run from AWS Elastic Beanstalk
+  * http://rubysample-env.4ngcymdfpz.us-east-1.elasticbeanstalk.com/worksheet=123456
+    * worksheet is a unique identifier for a student worksheet, can be any integer
+
 * Run locally
   * scripts/run-local.bash
-  * open a webbrowser and enter url http://localhost:3000
+    * open a webbrowser and enter url http://localhost:3000
 
 * Open rails console & execute a check_answer command
   * scripts/run-console.bash
-  * irb> UOMConversion.check_answer('84.2','Fahrenheit','Rankine','543.94')
+  * check student answer
+    * irb> UOMConversion.check_answer('84.2','Fahrenheit','Rankine','543.94')
+  * list supported unit names
+    * irb> UOMConversion.listUnits
+  * list supported unit names for property
+    * irb> UOMConversion.listUnitsForProperty('temparature')
+  * list units comaptible with named unit
+    * irb> UOMConversion.listCompatibleUnits('kelvin')
 
 * curl to AWS public url from command line
   * Index

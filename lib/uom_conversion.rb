@@ -1,6 +1,8 @@
 require 'unitwise'
 module UOMConversion
 
+    # define our lexicon of valid conversion units
+    # this is, in effect a way to constrain and alias the UMOM spec
     VALID_UNITS = {
       'kelvin' => {
          'name' => 'kelvin',
@@ -71,8 +73,12 @@ module UOMConversion
   end
 
   def UOMConversion.listCompatibleUnits(unit_name)
-    property = VALID_UNITS[unit_name]["property"]
-    UOMConversion.listUnitsForProperty(property)
+    begin
+      property = VALID_UNITS[unit_name.downcase]["property"]
+      UOMConversion.listUnitsForProperty(property)
+    rescue
+     []
+    end
   end
 
   def UOMConversion.listUnitsForProperty(prop)
