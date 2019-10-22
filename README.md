@@ -36,7 +36,8 @@ A development instance of the application is run from within a docker image and 
   * scripts/build.bash
 
 * How to run the test suite
-  * scripts/run-test.bash
+  * scripts/run-tests.bash
+  * __Note__:  The test suite is executed on every commit and push.  These operations will not be permitted unless all test cases pass.
 
 * Open bash shell within docker image
   * scripts/run-shell.bash
@@ -63,7 +64,7 @@ This application can be run from the AWS cloud, started up locally on port 3003 
   * list supported unit names
     * irb> UOMConversion.listUnits
   * list supported unit names for property
-    * irb> UOMConversion.listUnitsForProperty('temparature')
+    * irb> UOMConversion.listUnitsForProperty('temperature')
   * list units comaptible with named unit
     * irb> UOMConversion.listCompatibleUnits('kelvin')
 
