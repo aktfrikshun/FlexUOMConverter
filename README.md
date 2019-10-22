@@ -37,6 +37,7 @@ A development instance of the application is run from within a docker image and 
 
 * How to run the test suite
   * scripts/run-tests.bash
+  * __Note__:  The test suite is executed on every commit and push.  These operations will not be permitted unless all test cases pass.
 
 * Open bash shell within docker image
   * scripts/run-shell.bash
