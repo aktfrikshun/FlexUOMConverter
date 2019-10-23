@@ -50,7 +50,7 @@ __Usage__
 This application can be run from the AWS cloud, started up locally on port 3003 or run from a ruby console window.   A JSON payload based REST service is also available which can be accessed via curl and http tools such as Postman
 
 * Run from AWS Elastic Beanstalk
-  * http://rubysample-env.4ngcymdfpz.us-east-1.elasticbeanstalk.com/worksheet=123456
+  * http://rubysample-env.4ngcymdfpz.us-east-1.elasticbeanstalk.com/?worksheet=123456
     * worksheet is a unique identifier for a student worksheet, can be any integer
 
 * Run locally
