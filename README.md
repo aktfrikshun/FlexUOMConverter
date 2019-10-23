@@ -81,6 +81,12 @@ This application can be run from the AWS cloud, started up locally on port 3003 
 
 __Proposed Enhancements__
 
+* Support https by procuring and installing an SSL Cert into the Elastic Beanstalk env
+
+* Procure and configure a domain name
+
+* Add NewRelic gem for application server, code and sql performance monitoring
+
 * Add Devise gem for user signup and login which provides User and UserSession model classes
 
 * Add model classes and administrative views for:
@@ -89,15 +95,11 @@ __Proposed Enhancements__
 
 * Add an import feature that will allow for bulk importing of a roster of Teachers and Students
 
-* Support https by procuring and installing an SSL Cert into the Elastic Beanstalk env
-
-* Procure and configure a domain name
-
 * Catch and provide nicely formatted pages for standard errors 404, 403, 500, No Route
 
 * Add Alexa skill based on UOMConversion module
 
 * Add mobile app and OCR reader as input for student responses
 
-* As usage volume increases, change the persistance layer to MySQL or Postgres, add in replication, load balancers and regional content delivery
+* As usage volume increases, change the persistance layer to an enterprise DB, add in replication, load balancers and regional content delivery
 
