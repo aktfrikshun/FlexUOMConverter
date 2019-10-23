@@ -93,6 +93,8 @@ __Proposed Enhancements__
   * Teacher, a subclass of User, with the ability ( Abilify gem ) to view, create, update, export and print a pdf of student worksheets
   * Student, a subclass of User, with the ability ( Abilify gem ) to view and print a pdf of their own worksheets
 
+* Add a Worksheet model class, controller and views and provide a webform to allow Teachers to create a worksheet, assign it to a Student and allow the Student to submit their answers directly
+
 * Add an import feature that will allow for bulk importing of a roster of Teachers and Students
 
 * Catch and provide nicely formatted pages for standard errors 404, 403, 500, No Route
